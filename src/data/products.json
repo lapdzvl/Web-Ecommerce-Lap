@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "bag",
+    "name": "Small Convertible Flex Bag",
+    "price": 320,
+    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+  },
+  {
+    "slug": "bag",
+    "name": "Studio Bag",
+    "price": 320,
+    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+  },
+  {
+    "slug": "bag",
+    "name": "Louise Slide Sandal",
+    "price": 320,
+    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+  },
+  {
+    "slug": "bag",
+    "name": "Mini Naomi Bag",
+    "price": 320,
+    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+  }
+]
