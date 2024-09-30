@@ -3,7 +3,7 @@ import ProductList from "@/components/ProductList";
 
 import products from "@/data/products.json";
 
-export default async function Home() {
+export default async function HomePage() {
   return (
     <>
       <Hero />

@@ -11,7 +11,7 @@ type Props = {
 
 export default function ProductList({ products }: Props) {
   return (
-    <section className="grid grid-cols-2 gap-x-1 gap-y-4 px-4">
+    <section className="grid grid-cols-2 gap-x-1 lg:gap-x-2 gap-y-4 lg:grid-cols-4">
       {products.map((product) => (
         <Link
           key={product.name}
@@ -24,7 +24,7 @@ export default function ProductList({ products }: Props) {
             alt=""
           />
           <span className="text-sm inline-block mt-2 mb-1">{product.name}</span>
-          <span className="block">${product.price}</span>
+          <span className="block text-lg">${product.price}</span>
         </Link>
       ))}
     </section>

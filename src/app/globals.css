@@ -8,6 +8,37 @@ body {
   font-family: Assistant, sans-serif;
 }
 
+@layer base {
+  p {
+    @apply leading-relaxed text-gray-700;
+  }
+
+  body > main {
+    @apply py-8;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .layout-px {
+    @apply px-4;
+  }
+  .layout-py {
+    @apply py-12;
+  }
+  .layout-basic {
+    @apply mx-auto max-w-screen-lg;
+  }
+  .layout-x {
+    @apply layout-basic layout-px;
+  }
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

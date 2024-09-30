@@ -4,11 +4,12 @@ export const styles = cva(
   [
     "border",
     "duration-300",
-    "px-4",
+    "px-8",
     "py-2.5",
     "transition-all",
     "hover:ring-1",
     "hover:shadow-md",
+    "font-medium",
   ],
   {
     variants: {
