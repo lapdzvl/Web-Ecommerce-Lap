@@ -1,12 +1,10 @@
 import Link from "next/link";
 
+import { Product } from "@/types";
+import { currencyFormat } from "@/utils";
+
 type Props = {
-  products: {
-    slug: string;
-    name: string;
-    price: number;
-    image: string;
-  }[];
+  products: Product[];
 };
 
 export default function ProductList({ products }: Props) {
@@ -20,11 +18,11 @@ export default function ProductList({ products }: Props) {
         >
           <img
             className="block transition-all duration-500 group-hover:shadow-lg"
-            src={product.image}
+            src={product.image[0]}
             alt=""
           />
           <span className="text-sm inline-block mt-2 mb-1">{product.name}</span>
-          <span className="block text-lg">${product.price}</span>
+          <span className="block text-lg">{currencyFormat(product.price)}</span>
         </Link>
       ))}
     </section>

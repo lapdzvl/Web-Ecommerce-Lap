@@ -1,12 +1,21 @@
 "use client";
 
-import { useState, type PropsWithChildren } from "react";
+import { ChangeEvent, useState, type PropsWithChildren } from "react";
 import { GoChevronDown } from "react-icons/go";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { IoCloseOutline, IoCheckmark } from "react-icons/io5";
 
-import { Button } from "@/components/ui";
+import { Button, Quantity } from "@/components/ui";
 import products from "@/data/products.json";
 import { useDisclosure } from "@/hooks";
+import {
+  useCartOperations,
+  useIsCartOpenAtomValue,
+  useIsCartOpenOperations,
+  useProductLengthAtomValue,
+} from "@/atoms";
+import Link from "next/link";
+import clsx from "clsx";
+import { currencyFormat } from "@/utils";
 
 export default function ProductSlugPage({
   params,
@@ -14,30 +23,90 @@ export default function ProductSlugPage({
   params: { slug: string };
 }) {
   const [quantity, setQuantity] = useState(1);
+  const isCartOpen = useIsCartOpenAtomValue();
+  const { open: openCart, close: closeCart } = useIsCartOpenOperations();
+  const productLengthInCart = useProductLengthAtomValue();
 
   const product = products.find((product) => product.slug === params.slug);
 
-  const decrease = () => quantity > 1 && setQuantity((state) => state - 1);
-  const increase = () => setQuantity((state) => state + 1);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setQuantity(+event.currentTarget.value);
+  const handleDecrease = () =>
+    quantity > 1 && setQuantity((state) => state - 1);
+  const handleIncrease = () => setQuantity((state) => state + 1);
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    openCart();
+    addProductToCart(product, quantity);
+  };
+
+  const { addProductToCart } = useCartOperations();
 
   if (!product) return <p>Not found</p>;
 
   return (
-    <main className="space-y-12 layout-x lg:space-y-20">
-      <section className="flex flex-col lg:flex-row gap-5 lg:gap-10">
+    <main className="space-y-12 layout-x lg:space-y-20 relative">
+      <section
+        className={clsx(
+          "border border-t-0 z-10 space-y-6 p-8 absolute top-0 right-0 bg-white transition lg:max-w-md w-full",
+          isCartOpen ? "translate-y-0" : "-translate-y-full hidden"
+        )}
+      >
+        <button className="absolute right-0 top-0 p-4" onClick={closeCart}>
+          <IoCloseOutline className="w-5 h-5" />
+        </button>
+        <div className="flex items-center gap-2 !mt-0">
+          <IoCheckmark className="h-4 w-4" />
+          <p className="text-sm">Đã thêm vào giỏ hàng</p>
+        </div>
+        <div className="flex gap-4">
+          <picture className="w-20">
+            <img src={product.image[0]} alt="" />
+          </picture>
+          <div>
+            <p>{product.name}</p>
+            <p className="text-gray-500">Color: Oyster</p>
+          </div>
+        </div>
+        <div className="space-y-3">
+          <Button className="w-full" intent="secondary" onClick={closeCart}>
+            <Link className="block" href="/cart">
+              Xem giỏ hàng ({productLengthInCart})
+            </Link>
+          </Button>
+          <Button className="w-full">Thanh toán</Button>
+          <div className="text-center">
+            <button
+              className="underline underline-offset-4"
+              onClick={closeCart}
+            >
+              Tiếp tục mua hàng
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col lg:flex-row gap-5 lg:fgap-10">
         <picture className="basis-2/3">
-          <img src={product.image} alt="" />
+          <img src={product.image[0]} alt="" />
         </picture>
 
         <div className="basis-1/3 sticky h-full top-0 inset-x-0 space-y-6">
           <div className="space-y-4">
             <h2 className="text-3xl font-medium">{product.name}</h2>
-            <div>${product.price}</div>
+            <div>{currencyFormat(product.price)}</div>
           </div>
 
-          <div className="space-y-2">
+          {/* Variations */}
+          {/* <div className="space-y-2">
             <div className="text-sm">Color</div>
             <div className="flex flex-wrap gap-2">
+              {product.color.map((color) => (
+                <button className="border line-through text-gray-400 rounded-full px-5 py-1.5">
+                  {color}
+                </button>
+              ))}
               <button className="border line-through text-gray-400 rounded-full px-5 py-1.5">
                 Olive Leaf
               </button>
@@ -57,36 +126,27 @@ export default function ProductSlugPage({
                 Pink Cloud
               </button>
             </div>
+          </div> */}
+
+          <div className="space-y-2">
+            <div className="text-sm">Số lượng</div>
+            <Quantity
+              value={quantity}
+              handleChange={handleChange}
+              handleDecrease={handleDecrease}
+              handleIncrease={handleIncrease}
+            />
           </div>
 
           <div className="space-y-2">
-            <div className="text-sm">Quantity</div>
-            <div className="border inline-flex items-center border-gray-500 p-3">
-              <button
-                className="px-3 disabled:text-gray-500 hover:disabled:cursor-not-allowed"
-                onClick={decrease}
-                disabled={quantity === 1}
-              >
-                <AiOutlineMinus />
-              </button>
-              <input
-                className="w-12 text-center appearance-none text-gray-500"
-                type="number"
-                min={1}
-                value={quantity}
-                onChange={(event) => setQuantity(+event.currentTarget.value)}
-              />
-              <button className="px-3" onClick={increase}>
-                <AiOutlinePlus />
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Button className="w-full" intent="secondary">
-              Add to cart
+            <Button
+              className="w-full"
+              intent="secondary"
+              onClick={handleAddToCart}
+            >
+              Thêm vào giỏ hàng
             </Button>
-            <Button className="w-full">Buy it now</Button>
+            <Button className="w-full">Mua ngay</Button>
           </div>
 
           <p>
@@ -129,10 +189,10 @@ export default function ProductSlugPage({
         </picture>
         <div className="lg:flex-1 bg-gray-100">
           <div className="space-y-4 p-10 lg:p-16">
-            <h2 className="text-3xl font-medium">A new kind of bag.</h2>
+            <h2 className="text-3xl font-medium">Một thiết kế mới.</h2>
             <p>
-              Unexpected shapes with smart details, functionality, a new luxury
-              feel with a contemporary price point.
+              Thiết kế thông minh với các chi tiết và chức năng thông minh, mang
+              lại cảm giác sang trọng mới với mức giá hiện đại.
             </p>
           </div>
         </div>
@@ -140,17 +200,19 @@ export default function ProductSlugPage({
 
       <section className="gap-8 grid lg:grid-cols-2">
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Free Shipping</h3>
+          <h3 className="text-lg font-medium">Giao hàng miễn phí</h3>
           <p>
-            We offer free worldwide express shipping on all orders. You&apos;ll
-            receive your order an estimated 1–4 days after shipment.
+            Chúng tôi cung cấp dịch vụ giao hàng nhanh miễn phí trên toàn thế
+            giới cho tất cả các đơn hàng. Bạn sẽ nhận được đơn hàng của mình
+            khoảng 1–4 ngày kể từ ngày giao hàng.
           </p>
         </div>
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Hassle-Free Exchanges</h3>
+          <h3 className="text-lg font-medium">Đổi trả dễ dàng</h3>
           <p>
-            Exchanges are free. Try from the comfort of your home. We will
-            collect from your home, work or an alternative address.
+            Đổi trả miễn phí. Hãy thoải mái thử đồ tại nhà của bạn. Chúng tôi sẽ
+            đến lấy hàng tại nhà, nơi làm việc hoặc một địa chỉ thay thế khác
+            của bạn.
           </p>
         </div>
       </section>

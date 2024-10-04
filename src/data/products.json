@@ -1,26 +1,66 @@
 [
   {
-    "slug": "bag",
-    "name": "Small Convertible Flex Bag",
-    "price": 320,
-    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+    "slug": "flower-shirt",
+    "name": "Flower shirt",
+    "price": 780000,
+    "image": [
+      "/images/products/f1.jpg",
+      "/images/products/f2.jpg",
+      "/images/products/f3.jpg",
+      "/images/products/f4.jpg",
+      "/images/products/f5.jpg",
+      "/images/products/n1.jpg",
+      "/images/products/n2.jpg",
+      "/images/products/n3.jpg",
+      "/images/products/n4.jpg",
+      "/images/products/n5.jpg"
+    ],
+    "color": [
+      "Yellow",
+      "Green",
+      "Brown",
+      "White",
+      "Purple",
+      "Blue",
+      "Gray",
+      "White",
+      "Golden Patterned",
+      "Blue"
+    ]
   },
   {
-    "slug": "bag",
-    "name": "Studio Bag",
-    "price": 320,
-    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+    "slug": "long-sleeve-shirt",
+    "name": "Long sleeve shirt",
+    "price": 800000,
+    "image": ["/images/products/f6.jpg", "/images/products/n7.jpg"],
+    "color": ["Brown & Blue", "Golden"]
   },
   {
-    "slug": "bag",
-    "name": "Louise Slide Sandal",
-    "price": 320,
-    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+    "slug": "flower-pants",
+    "name": "Flower Pants",
+    "price": 780000,
+    "image": ["/images/products/f7.jpg"],
+    "color": []
   },
   {
-    "slug": "bag",
-    "name": "Mini Naomi Bag",
-    "price": 320,
-    "image": "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg"
+    "slug": "long-sleeve",
+    "name": "Long sleeve",
+    "price": 920000,
+    "image": ["/images/products/f8.jpg"],
+    "color": ["Purple"]
+  },
+  {
+    "slug": "trouser",
+    "name": "Trouser",
+    "price": 800000,
+    "image": ["/images/products/n6.jpg"],
+    "color": ["Gray"]
+  },
+  {
+    "slug": "short-sleeve-shirt",
+    "name": "Short sleeve shirt",
+    "price": 780000,
+    "image": ["/images/products/n8.jpg"],
+    "color": ["Black"]
   }
 ]

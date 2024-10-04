@@ -4,14 +4,13 @@ export default function ContactPage() {
   return (
     <main className="space-y-16">
       <section className="layout-x space-y-8">
-        <h2 className="text-5xl font-medium">Contact us</h2>
+        <h2 className="text-5xl font-medium">Liên hệ chúng tôi</h2>
         <div className="space-y-4">
-          <p>Trade name: Your Business Name Inc.</p>
-          <p>Phone number: +1 123-456-789</p>
+          <p>Tên công ty: Your Business Name Inc.</p>
+          <p>Số điện thoại: +1 123-456-789</p>
           <p>Email: yourbusinessemail@address.com</p>
-          <p>Physical address: 3 Industrial Pkwy S, Aurora Ontario L4G 3V9</p>
-          <p>VAT number: FRXX999999999</p>
-          <p>Trade number: 123456789</p>
+          <p>Địa chỉ: 3 Industrial Pkwy S, Aurora Ontario L4G 3V9</p>
+          <p>Số giao dịch: 123456789</p>
         </div>
       </section>
 
@@ -22,7 +21,7 @@ export default function ContactPage() {
               className="w-full"
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder="Tên"
             />
             <Input
               className="w-full"
@@ -35,16 +34,16 @@ export default function ContactPage() {
             className="w-full"
             type="text"
             name="phone"
-            placeholder="Phone number"
+            placeholder="Số điện thoại"
           />
           <Textarea
             className="w-full"
             name="comment"
-            placeholder="Comment"
+            placeholder="Lời nhắn"
             rows={4}
           />
           <Button className="w-32" type="submit">
-            Send
+            Gửi
           </Button>
         </form>
       </section>

@@ -7,16 +7,19 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <section className="text-center py-20 space-y-4">
+      <section className="text-center py-20 space-y-4 layout-x lg:max-w-xl">
         <h2 className="text-3xl font-medium">
-          Obsessive Attention. Intelligent Effort.
+          Ám ảnh với chi tiết. <br className="lg:hidden" />
+          Thiết kế thông minh.
         </h2>
         <p>
-          Functional handbags made of luxurious materials to improve peoples
-          lives in small but mighty ways.
+          Những bộ quần áo tiện dụng làm từ chất liệu sang trọng giúp cải thiện
+          cuộc sống của mọi người theo những cách nhỏ bé nhưng mạnh mẽ.
         </p>
       </section>
-      <ProductList products={products} />
+      <section className="layout-x">
+        <ProductList products={products} />
+      </section>
     </>
   );
 }

@@ -6,33 +6,37 @@ import { CiMenuBurger, CiShoppingCart } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 
 import { useDisclosure } from "@/hooks";
+import { useProductLengthAtomValue } from "@/atoms";
 
 export default function Header() {
   const [isOpen, { toggle }] = useDisclosure();
 
+  const productLength = useProductLengthAtomValue();
+
   return (
-    <header className="border-b">
+    <header className="border-b relative z-20">
       <div className="py-2.5 text-center text-xs tracking-widest border-b">
-        Free shipping available on all orders!
+        Giao hàng miễn phí cho tất cả đơn hàng!
       </div>
-      <div className="grid grid-cols-3 py-3.5 px-4 items-center layout-x">
-        <button onClick={toggle}>
+      <div className="grid grid-cols-3 py-3.5 px-4 items-center layout-x lg:grid-cols-2">
+        <button className="lg:hidden" onClick={toggle}>
           {isOpen ? (
             <IoCloseOutline className="h-6 w-6" />
           ) : (
             <CiMenuBurger className="h-6 w-6" />
           )}
         </button>
-        <Link className="text-center" href="/">
+        <Link className="text-center lg:text-left" href="/">
           DAWN
         </Link>
         <div className="space-x-4 text-right">
-          <button></button>
           <Link className="relative inline-block" href="/cart">
             <CiShoppingCart className="h-8 w-8" />
-            <span className="absolute right-0 top-0 inline-flex justify-center items-center text-white bg-black text-xs rounded-full h-4 w-4">
-              0
-            </span>
+            {productLength > 0 && (
+              <span className="absolute right-0 top-0 inline-flex justify-center items-center text-white bg-black text-xs rounded-full h-4 w-4">
+                {productLength}
+              </span>
+            )}
           </Link>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function Footer() {
       <section className="layout-x">
         <div className="grid md:grid-cols-3 gap-12 py-8 px-6">
           <div className="space-y-6">
-            <h2 className="text-lg">Quick links</h2>
+            <h2 className="text-lg">Liên kết nhanh</h2>
             <ul className="space-y-6 text-sm text-gray-600">
               <li>
                 <Link href="">Bags</Link>
@@ -29,26 +29,27 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-6">
-            <h2 className="text-lg">Info</h2>
+            <h2 className="text-lg">Thông tin</h2>
             <ul className="space-y-6 text-sm text-gray-600">
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/about">Về Chúng Tôi</Link>
               </li>
               <li>
-                <Link href="/contact">Contact Us</Link>
+                <Link href="/contact">Liên Hệ</Link>
               </li>
               <li>
-                <Link href="/shipping">Shipping policy</Link>
+                <Link href="/shipping">Chính sách giao hàng</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blog">Blog</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="space-y-6">
-            <h2 className="text-lg">Our mission</h2>
+            <h2 className="text-lg">Sứ mạng của chúng tôi</h2>
             <p className="text-gray-600">
-              Quality materials, good designs, craftsmanship and sustainability.
+              Mạng lại vật liệu chất lượng, thiết kế đẹp mắt, tay nghề thủ công
+              và sản phẩm bền vững.
             </p>
           </div>
         </div>
@@ -56,7 +57,7 @@ export default function Footer() {
 
       <section className="layout-x flex flex-col gap-10 md:flex-row md:justify-between">
         <div className="text-center space-y-6">
-          <h2 className="md:text-lg">Subscribe to our emails</h2>
+          <h2 className="md:text-lg">Đăng ký nhận tin</h2>
           <Input className="w-60 md:w-96" type="text" placeholder="Email" />
         </div>
         <div className="md:self-end">

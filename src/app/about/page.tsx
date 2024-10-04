@@ -50,13 +50,13 @@ export default function AboutPage() {
 
       <section className="layout-x">
         <div className="bg-gray-100 text-center p-12 space-y-6">
-          <h2 className="text-xl font-medium">Our quality promise</h2>
+          <h2 className="text-xl font-medium">Lời hứa về chất lượng</h2>
           <p>
-            Quality is never an accident. It is always the result of intelligent
-            effort. We spend most of our time and energy for good design and to
-            achieve high quality. Every single detail from material to technique
-            is thought through with obsessive attention. If our product
-            doesn&apos;t satisfy you, we&apos;ll take it back.
+            Chất lượng không bao giờ là ngẫu nhiên. Nó luôn là kết quả của nỗ
+            lực thông minh. Chúng tôi dành phần lớn thời gian và năng lượng của
+            mình cho thiết kế tốt và để đạt được chất lượng cao. Mọi chi tiết từ
+            vật liệu đến kỹ thuật đều được cân nhắc kỹ lưỡng. Nếu sản phẩm của
+            chúng tôi không làm bạn hài lòng, chúng tôi sẽ lấy lại.
           </p>
         </div>
       </section>
