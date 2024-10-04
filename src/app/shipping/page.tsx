@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Vận chuyển | Dawn",
+  description: "",
+};
+
 export default function ShippingPage() {
   return (
     <main className="space-y-12">

@@ -8,14 +8,11 @@ export const useIsCartOpenOperations = () => {
   const write = useSetAtom(baseAtom);
 
   return {
-    open() {
+    openCart() {
       write(true);
     },
-    close() {
+    closeCart() {
       write(false);
-    },
-    toggle() {
-      write((prev) => !prev);
     },
   };
 };

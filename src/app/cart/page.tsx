@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Giỏ Hàng | Dawn",
+  description: "",
+};
+
 import products from "@/data/products.json";
 import { Button } from "@/components/ui";
 import ProductList from "@/components/ProductList";

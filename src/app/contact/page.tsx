@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Liên hệ | Dawn",
+  description: "",
+};
+
 import { Button, Input, Textarea } from "@/components/ui";
 
 export default function ContactPage() {

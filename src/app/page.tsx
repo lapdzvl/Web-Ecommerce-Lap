@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Trang chủ | Dawn",
+  description: "",
+};
+
 import Hero from "@/components/Hero";
 import ProductList from "@/components/ProductList";
 
